@@ -31,7 +31,7 @@ func (emoji *Emoji) Auditable() map[string]any {
 		"id":         emoji.Id,
 		"create_at":  emoji.CreateAt,
 		"update_at":  emoji.UpdateAt,
-		"delete_at":  emoji.CreateAt,
+		"delete_at":  emoji.DeleteAt,
 		"creator_id": emoji.CreatorId,
 		"name":       emoji.Name,
 	}

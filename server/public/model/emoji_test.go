@@ -10,6 +10,16 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func TestEmojiAuditable(t *testing.T) {
+	for _, deleteAt := range []int64{0, 3000} {
+		emoji := &Emoji{CreateAt: 1000, UpdateAt: 2000, DeleteAt: deleteAt}
+		auditable := emoji.Auditable()
+		require.Equal(t, deleteAt, auditable["delete_at"])
+		require.Equal(t, emoji.CreateAt, auditable["create_at"])
+		require.Equal(t, emoji.UpdateAt, auditable["update_at"])
+	}
+}
+
 func TestEmojiIsValid(t *testing.T) {
 	emoji := Emoji{
 		Id:        NewId(),
